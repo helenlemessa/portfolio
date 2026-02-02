@@ -115,13 +115,16 @@ app.post('/api/test-email-setup', async (req, res) => {
     console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? '***' + process.env.EMAIL_PASS.slice(-4) : 'NOT SET');
     console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL);
     
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
+   const transporter = nodemailer.createTransport({
+  host: 'smtp.office365.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
 
     await transporter.verify();
     console.log('✅ Email configuration test PASSED');
@@ -155,7 +158,7 @@ app.get('/', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT ;
 
 app.listen(PORT, () => {
   console.log('🚀 ===== SERVER STARTED =====');
