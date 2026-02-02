@@ -20,26 +20,38 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  // Reset status
+  setSubmitStatus(null);
+  setIsSubmitting(true);
+  
+  try {
+    const BACKEND_URL = process.env.NODE_ENV === 'production' 
+      ? 'https://portfolio-r7d5.onrender.com'
+      : 'http://localhost:5001';
     
-    try {
-      // Replace with your backend endpoint
-      const response = await axios.post('https://portfolio-r7d5.onrender.com/api/contact', formData)
-      
-      if (response.status === 200) {
-        setSubmitStatus('success')
-        setFormData({ name: '', email: '', subject: '', message: '' })
-      }
-    } catch (error) {
-      setSubmitStatus('error')
-      console.error('Error sending message:', error)
-    } finally {
-      setIsSubmitting(false)
-      setTimeout(() => setSubmitStatus(null), 5000)
+    const response = await axios.post(`${BACKEND_URL}/api/contact`, formData);
+    
+    if (response.data.success) {
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } else {
+      setSubmitStatus('error');
+      console.error('Server error:', response.data.error);
     }
+  } catch (error) {
+    setSubmitStatus('error');
+    console.error('Error details:');
+    console.error('Full error:', error);
+    console.error('Response data:', error.response?.data);
+    console.error('Response status:', error.response?.status);
+  } finally {
+    setIsSubmitting(false);
+    setTimeout(() => setSubmitStatus(null), 5000);
   }
+};
 
   const containerVariants = {
     hidden: { opacity: 0 },
