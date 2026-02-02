@@ -1,4 +1,4 @@
-// server/server.js - UPDATED VERSION
+// server/server.js
 const express = require('express');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
@@ -8,163 +8,119 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
+/* =======================
+   Middleware
+======================= */
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://portfolio-eta-wheat-58.vercel.app/'
+    'https://portfolio-eta-wheat-58.vercel.app'
   ],
-  methods: ['POST', 'GET'],
+  methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type']
 }));
 
 app.use(express.json());
 
-// Test endpoint
+/* =======================
+   Test Route
+======================= */
 app.get('/api/test', (req, res) => {
-  res.json({ 
-    message: 'Server is working perfectly!', 
-    timestamp: new Date().toISOString(),
-    status: 'OK'
+  res.json({
+    status: 'OK',
+    message: 'Backend is working',
+    time: new Date().toISOString()
   });
 });
 
-// Contact endpoint WITH REAL EMAIL
+/* =======================
+   Contact Route
+======================= */
 app.post('/api/contact', async (req, res) => {
-  console.log('📧 Contact form submitted:', req.body);
-  
   const { name, email, subject, message } = req.body;
-  
-  // Validation
+
+  // Basic validation
   if (!name || !email || !subject || !message) {
     return res.status(400).json({
+      success: false,
       error: 'All fields are required'
     });
   }
 
   try {
-    console.log('🔐 Attempting to send email...');
-    console.log('Using email:', process.env.EMAIL_USER);
-    console.log('Password length:', process.env.EMAIL_PASS?.length);
-    
-    // Create email transporter
+    // Create transporter (OUTLOOK / OFFICE365)
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: 'smtp.office365.com',
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-      },
-      debug: true, // This will show detailed SMTP logs
-      logger: true
+      }
     });
 
-    // Verify connection
-    console.log('🔄 Verifying SMTP connection...');
+    // Verify SMTP connection
     await transporter.verify();
-    console.log('✅ SMTP connection verified');
 
-    // Email options
+    // Mail options
     const mailOptions = {
       from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
       to: process.env.CONTACT_EMAIL,
       replyTo: email,
-      subject: `Portfolio Contact: ${subject}`,
+      subject: `Portfolio Message: ${subject}`,
       html: `
-        <h3>New Contact Form Submission</h3>
+        <h3>New Portfolio Message</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Subject:</strong> ${subject}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
-        <hr>
-        <p><small>Sent from your portfolio website</small></p>
+        <hr />
+        <small>Sent from your portfolio website</small>
       `
     };
 
     // Send email
-    console.log('📤 Sending email...');
-    const result = await transporter.sendMail(mailOptions);
-    console.log('✅ Email sent successfully! Message ID:', result.messageId);
-    console.log('✅ Response:', result.response);
+    await transporter.sendMail(mailOptions);
 
     res.status(200).json({
       success: true,
-      message: 'Thank you! Your message has been sent successfully.',
-      messageId: result.messageId
+      message: 'Message sent successfully'
     });
 
   } catch (error) {
-    console.error('❌ Email sending failed:', error.message);
-    console.error('Error code:', error.code);
-    console.error('Full error:', error);
-    
+    console.error('EMAIL ERROR:', error);
+
     res.status(500).json({
       success: false,
-      error: 'Failed to send email',
-      details: error.message,
-      code: error.code
+      error: 'Failed to send message'
     });
   }
 });
 
-// Test email configuration endpoint
-app.post('/api/test-email-setup', async (req, res) => {
-  try {
-    console.log('🧪 Testing email configuration...');
-    console.log('EMAIL_USER:', process.env.EMAIL_USER);
-    console.log('EMAIL_PASS:', process.env.EMAIL_PASS ? '***' + process.env.EMAIL_PASS.slice(-4) : 'NOT SET');
-    console.log('CONTACT_EMAIL:', process.env.CONTACT_EMAIL);
-    
-   const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-
-    await transporter.verify();
-    console.log('✅ Email configuration test PASSED');
-    
-    res.json({ 
-      success: true,
-      message: 'Email configuration is correct!',
-      user: process.env.EMAIL_USER,
-      contact: process.env.CONTACT_EMAIL
-    });
-  } catch (error) {
-    console.error('❌ Email configuration test FAILED:', error.message);
-    res.status(500).json({ 
-      success: false,
-      error: 'Email configuration failed',
-      details: error.message 
-    });
-  }
-});
-
-// Root endpoint
+/* =======================
+   Root Route
+======================= */
 app.get('/', (req, res) => {
   res.json({
-    message: 'Portfolio Backend Server is Running! 🚀',
+    message: 'Portfolio Backend Running',
     endpoints: {
-      test: 'GET /api/test',
-      contact: 'POST /api/contact',
-      testEmail: 'POST /api/test-email-setup'
-    },
-    timestamp: new Date().toISOString()
+      test: '/api/test',
+      contact: '/api/contact'
+    }
   });
 });
 
-const PORT = process.env.PORT ;
+/* =======================
+   Server Start
+======================= */
+const PORT = process.env.PORT || 5001;
 
 app.listen(PORT, () => {
-  console.log('🚀 ===== SERVER STARTED =====');
-  console.log(`📍 Port: ${PORT}`);
-  console.log(`📧 Email: ${process.env.EMAIL_USER}`);
-  console.log(`🔑 Password: ${process.env.EMAIL_PASS ? 'Set (' + process.env.EMAIL_PASS.length + ' chars)' : 'NOT SET'}`);
-  console.log('✅ Server is ready!');
+  console.log('==============================');
+  console.log('🚀 SERVER STARTED');
+  console.log('📍 Port:', PORT);
+  console.log('📧 Email User:', process.env.EMAIL_USER ? 'SET' : 'NOT SET');
+  console.log('📨 Contact Email:', process.env.CONTACT_EMAIL ? 'SET' : 'NOT SET');
   console.log('==============================');
 });
