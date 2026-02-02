@@ -26,7 +26,7 @@ const Contact = () => {
     
     try {
       // Replace with your backend endpoint
-      const response = await axios.post('http://localhost:5001/api/contact', formData)
+      const response = await axios.post('https://portfolio-r7d5.onrender.com/api/contact', formData)
       
       if (response.status === 200) {
         setSubmitStatus('success')
