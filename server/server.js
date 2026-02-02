@@ -12,7 +12,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:5173',
-    'https://your-vercel-site.vercel.app'
+    'https://portfolio-eta-wheat-58.vercel.app/'
   ],
   methods: ['POST', 'GET'],
   allowedHeaders: ['Content-Type']
