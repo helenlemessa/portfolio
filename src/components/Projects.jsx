@@ -25,10 +25,10 @@ const Projects = () => {
       image: '/api/placeholder/400/250',
       tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
       category: 'fullstack',
-      liveUrl: '', // No live demo yet
-      codeUrl: 'https://github.com/helenlemessa/Affordable-Housing-Rental-Platform',
+      liveUrl: 'https://addis-rent-fullstack.vercel.app/', // No live demo yet
+      codeUrl: 'https://github.com/helenlemessa/Addis-rent-fullstack',
       projectUrl: 'https://housing-platform-demo.com',
-      liveStatus: 'coming-soon' // <-- Coming Soon flag
+      liveStatus: 'live' // <-- Coming Soon flag
     },
     {
       id: 3,
