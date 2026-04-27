@@ -1,4 +1,4 @@
-// src/components/About.jsx - Updated description
+// src/components/About.jsx - Updated for job application
 import React from 'react'
 import { motion } from 'framer-motion'
 import profileImage from "../assets/profile.jpg";
@@ -26,9 +26,9 @@ const About = () => {
   }
 
   const skills = [
-    'JavaScript', 'React', 'Node.js', 'TypeScript', 'MongoDB',
-    'Express', 'Git', 'Tailwind CSS', 'REST APIs', 'HTML5',
-    'CSS3', 'Figma'
+    'JavaScript', 'React', 'Flutter', 'Node.js', 'TypeScript', 
+    'MongoDB', 'Express', 'Dart', 'Git', 'Tailwind CSS', 
+    'REST APIs', 'HTML5', 'CSS3', 'Figma'
   ]
 
   return (
@@ -47,20 +47,20 @@ const About = () => {
         <div className="about-content">
           <motion.div className="about-text" variants={itemVariants}>
             <motion.h3 variants={itemVariants}>
-              Frontend Developer with MERN Stack Expertise
+              Full Stack Developer | React, Flutter & Node.js
             </motion.h3>
             
             <motion.p variants={itemVariants}>
-              I'm a passionate Frontend Developer specializing in React with 
-              full MERN stack capabilities. I create seamless user experiences 
-              while understanding the entire web development ecosystem.
+              I'm a passionate Full Stack Developer specializing in React and Flutter, 
+              with full MERN stack capabilities. I create seamless user experiences 
+              across web and mobile platforms while understanding the entire development ecosystem.
             </motion.p>
             
             <motion.p variants={itemVariants}>
               With expertise in both frontend and backend technologies, I build 
-              complete web applications from database to user interface. I've 
-              worked on various projects ranging from simple websites to complex 
-              fullstack applications with real-time features.
+              complete web and mobile applications from database to user interface. 
+              I've worked on various projects including web dashboards, fullstack platforms, 
+              real-time chat applications, and cross-platform mobile apps with Flutter.
             </motion.p>
             
             <motion.p variants={itemVariants}>
@@ -95,10 +95,10 @@ const About = () => {
                 </div>
                 <div className="profile-info">
                   <h4>Helen Lemessa</h4>
-                  <p>Frontend Developer | MERN Stack</p>
+                  <p>Full Stack Developer | MERN + Flutter</p>
                   <div className="profile-stats">
                     <div className="stat">
-                      <strong>4+</strong>
+                      <strong>5+</strong>
                       <span>Projects</span>
                     </div>
                     <div className="stat">
@@ -107,7 +107,7 @@ const About = () => {
                     </div>
                     <div className="stat">
                       <strong>100%</strong>
-                      <span>Client Satisfaction</span>
+                      <span>Commitment</span>
                     </div>
                   </div>
                 </div>

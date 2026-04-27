@@ -1,4 +1,4 @@
-// src/components/Hero.jsx - Updated title
+// src/components/Hero.jsx - For 4loops Technologies Application
 import React from 'react'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
@@ -10,7 +10,7 @@ const Hero = () => {
       display: 'flex',
       alignItems: 'center',
       background: 'linear-gradient(135deg, #16213e 0%, #1a1a2e 100%)',
-       padding: '60px 20px 20px',
+      padding: '60px 20px 20px',
       color: 'white',
       textAlign: 'center'
     }}>
@@ -37,18 +37,18 @@ const Hero = () => {
             marginBottom: '1.5rem',
             color: '#6C63FF',
             fontWeight: '600',
-            minHeight: '60px',
+            minHeight: '80px',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center'
           }}>
             <TypeAnimation
               sequence={[
-                'Frontend Developer | MERN Stack',
+                'Full Stack Developer | MERN + Flutter',
                 2500,
-                'React Specialist',
+                'React & Flutter Developer',
                 2000,
-                'UI/UX Enthusiast',
+                'Mobile & Web Developer',
                 2000,
                 'Problem Solver',
                 2000,
@@ -67,7 +67,7 @@ const Hero = () => {
             marginLeft: 'auto',
             marginRight: 'auto'
           }}>
-            I create beautiful, functional web applications with modern technologies. 
+            I create beautiful, functional web and mobile applications with React, Flutter, and Node.js. 
             Passionate about clean code, user experience, and bringing ideas to life.
           </p>
           

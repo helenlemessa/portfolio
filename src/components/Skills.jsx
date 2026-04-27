@@ -1,23 +1,26 @@
-// src/components/Skills.jsx - NO EMOJIS VERSION
+// src/components/Skills.jsx - Updated for job application
 import React from 'react'
 import { motion } from 'framer-motion'
 
 const Skills = () => {
   const skillsData = [
     { name: 'React', level: 85, color: '#61DAFB' },
+    { name: 'Flutter', level: 75, color: '#02569B' },  // ADDED Flutter
     { name: 'JavaScript', level: 90, color: '#F7DF1E' },
+    { name: 'Dart', level: 70, color: '#00B4AB' },    // ADDED Dart
+    { name: 'Node.js', level: 70, color: '#339933' },  // Increased from 65
     { name: 'HTML5', level: 95, color: '#E34F26' },
     { name: 'CSS3', level: 90, color: '#1572B6' },
     { name: 'TypeScript', level: 75, color: '#3178C6' },
     { name: 'Next.js', level: 70, color: '#000000' },
     { name: 'Tailwind CSS', level: 80, color: '#06B6D4' },
-    { name: 'Node.js', level: 65, color: '#339933' },
     { name: 'Git', level: 85, color: '#F05032' },
-    { name: 'REST APIs', level: 70, color: '#FF6B6B' }
+    { name: 'REST APIs', level: 75, color: '#FF6B6B' }  // Increased from 70
   ]
 
   const tools = [
     { name: 'VS Code' },
+    { name: 'Android Studio' },  // ADDED for Flutter
     { name: 'GitHub' },
     { name: 'Figma' },
     { name: 'Postman' },
@@ -33,9 +36,9 @@ const Skills = () => {
     { name: 'Framer Motion' },
     { name: 'Material-UI' },
     { name: 'Axios' },
+    { name: 'Flutter Widgets' },  // ADDED
     { name: 'SASS/SCSS' },
-    { name: 'Bootstrap' },
-    { name: 'React Query' }
+    { name: 'Bootstrap' }
   ]
 
   return (
@@ -63,7 +66,7 @@ const Skills = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.1 }}
         >
-          Specializing in modern frontend development with React, TypeScript, and responsive design.
+          Full Stack Developer specializing in React, Flutter, and Node.js. Building web and mobile applications with modern technologies.
         </motion.p>
         
         <div className="skills-content">
@@ -106,7 +109,7 @@ const Skills = () => {
           {/* Right Column - Tools & Frameworks */}
           <div className="tools-frameworks">
             <div className="tools-section">
-              <h3>Tools</h3>
+              <h3>Tools & IDEs</h3>
               <div className="tools-grid">
                 {tools.map((tool, index) => (
                   <motion.div

@@ -1,10 +1,11 @@
-// src/components/Projects.jsx - FIXED VERSION
+// src/components/Projects.jsx - COMPLETE VERSION
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import propertyImg from '../assets/images/propmanage.png'
 import housingImg from '../assets/images/addisrent.png'
 import servicehubImg from '../assets/images/servicehub.png'
 import culturehubImg from '../assets/images/culturehub.png'
+import addisrentMobileImg from '../assets/images/addisrentMobileImg.jpg'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -57,6 +58,18 @@ const Projects = () => {
       codeUrl: 'https://github.com/helenlemessa/culturehub',
       projectUrl: 'https://culturehub-nine.vercel.app/',
       liveStatus: 'live'
+    },
+    {
+      id: 5,
+      title: 'Addis Rent - Mobile App',
+      description: 'Flutter mobile application for property rental platform. Features property listings, search/filter, user profiles, and booking functionality. Complete cross-platform mobile solution.',
+      image: addisrentMobileImg,
+      tags: ['Flutter', 'Dart', 'REST APIs', 'Mobile Development'],
+      category: 'mobile',
+      liveUrl: 'https://github.com/helenlemessa/Addis-Rent-app',
+      codeUrl: 'https://github.com/helenlemessa/Addis-Rent-app',
+      projectUrl: 'https://github.com/helenlemessa/Addis-Rent-app',
+      liveStatus: 'live'
     }
   ]
 
@@ -98,7 +111,7 @@ const Projects = () => {
         </motion.h2>
         
         <motion.div className="project-filters" variants={itemVariants}>
-          {['all', 'frontend', 'fullstack'].map(filter => (
+          {['all', 'frontend', 'fullstack', 'mobile'].map(filter => (
             <motion.button
               key={filter}
               className={`filter-btn ${activeFilter === filter ? 'active' : ''}`}
@@ -131,15 +144,10 @@ const Projects = () => {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="project-image">
-                  {/* THIS IS WHERE THE IMAGE GOES - FIXED! */}
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
+                    className="project-img"
                   />
                   <div className="project-overlay">
                     <div className="project-links">

@@ -1360,3 +1360,46 @@ section {
     gap: 1rem !important;
   }
 }
+/* Fix project images - shows full image without cropping */
+.project-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* Changed from 'cover' to 'contain' - shows full image */
+  object-position: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+/* If you want mobile app screenshots to look better */
+.project-card[data-category="mobile"] .project-img {
+  object-fit: contain;
+  padding: 10px;  /* Adds padding around mobile screenshots */
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.02);
+}
+
+/* Make image container responsive for different aspect ratios */
+@media (max-width: 768px) {
+  .project-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-image {
+    height: 180px;
+  }
+}
