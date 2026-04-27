@@ -1,6 +1,6 @@
 // src/App.jsx
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import './App.css'
 
 // Components
@@ -11,19 +11,9 @@ import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
-import LoadingScreen from './components/LoadingScreen'
 
 function App() {
-  const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,10 +35,6 @@ function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  if (loading) {
-    return <LoadingScreen />
-  }
 
   return (
     <div className="App">

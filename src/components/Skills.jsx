@@ -1,4 +1,4 @@
-// src/components/Skills.jsx - MORE COMPACT VERSION
+// src/components/Skills.jsx - NO EMOJIS VERSION
 import React from 'react'
 import { motion } from 'framer-motion'
 
@@ -17,32 +17,25 @@ const Skills = () => {
   ]
 
   const tools = [
-    { name: 'VS Code', icon: '💻' },
-    { name: 'GitHub', icon: '🐙' },
-    { name: 'Figma', icon: '🎨' },
-    { name: 'Postman', icon: '📮' },
-    { name: 'Vite', icon: '⚡' },
-    { name: 'DevTools', icon: '🔧' },
-    { name: 'Netlify', icon: '☁️' },
-    { name: 'Vercel', icon: '▲' }
+    { name: 'VS Code' },
+    { name: 'GitHub' },
+    { name: 'Figma' },
+    { name: 'Postman' },
+    { name: 'Vite' },
+    { name: 'DevTools' },
+    { name: 'Netlify' },
+    { name: 'Vercel' }
   ]
 
   const frameworks = [
-    { name: 'React Router', icon: '🛣️' },
-    { name: 'Redux', icon: '🔄' },
-    { name: 'Framer Motion', icon: '🎬' },
-    { name: 'Material-UI', icon: '🎭' },
-    { name: 'Axios', icon: '🔗' },
-    { name: 'SASS/SCSS', icon: '💅' },
-    { name: 'Bootstrap', icon: '🎪' },
-    { name: 'React Query', icon: '🔍' }
-  ]
-
-  const expertise = [
-    { title: 'Frontend Dev', desc: 'React & modern UI development', icon: '🎨' },
-    { title: 'Responsive Design', desc: 'Mobile-first responsive layouts', icon: '📱' },
-    { title: 'Basic Backend', desc: 'Node.js, Express & MongoDB', icon: '⚙️' },
-    { title: 'Performance', desc: 'Optimized, fast web apps', icon: '🚀' }
+    { name: 'React Router' },
+    { name: 'Redux' },
+    { name: 'Framer Motion' },
+    { name: 'Material-UI' },
+    { name: 'Axios' },
+    { name: 'SASS/SCSS' },
+    { name: 'Bootstrap' },
+    { name: 'React Query' }
   ]
 
   return (
@@ -125,7 +118,6 @@ const Skills = () => {
                     transition={{ delay: index * 0.05 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="tool-icon">{tool.icon}</span>
                     {tool.name}
                   </motion.div>
                 ))}
@@ -133,7 +125,7 @@ const Skills = () => {
             </div>
             
             <div className="frameworks-section">
-              <h3>Libraries</h3>
+              <h3>Libraries & Frameworks</h3>
               <div className="frameworks-grid">
                 {frameworks.map((framework, index) => (
                   <motion.div
@@ -145,7 +137,6 @@ const Skills = () => {
                     transition={{ delay: index * 0.05 + 0.1 }}
                     whileHover={{ scale: 1.05 }}
                   >
-                    <span className="framework-icon">{framework.icon}</span>
                     {framework.name}
                   </motion.div>
                 ))}
@@ -153,7 +144,6 @@ const Skills = () => {
             </div>
           </div>
         </div>
-   
       </div>
     </motion.section>
   )

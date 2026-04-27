@@ -1,4 +1,4 @@
-// src/components/About.jsx
+// src/components/About.jsx - Updated description
 import React from 'react'
 import { motion } from 'framer-motion'
 import profileImage from "../assets/profile.jpg";
@@ -26,9 +26,9 @@ const About = () => {
   }
 
   const skills = [
-    'JavaScript', 'React', 'Node.js', 'TypeScript', 'Python',
-    'MongoDB', 'PostgreSQL', 'Express', 'Git', 'AWS',
-    'Docker', 'CSS3', 'HTML5', 'REST APIs', 'GraphQL'
+    'JavaScript', 'React', 'Node.js', 'TypeScript', 'MongoDB',
+    'Express', 'Git', 'Tailwind CSS', 'REST APIs', 'HTML5',
+    'CSS3', 'Figma'
   ]
 
   return (
@@ -47,19 +47,20 @@ const About = () => {
         <div className="about-content">
           <motion.div className="about-text" variants={itemVariants}>
             <motion.h3 variants={itemVariants}>
-              Creating digital solutions with code and creativity
+              Frontend Developer with MERN Stack Expertise
             </motion.h3>
             
             <motion.p variants={itemVariants}>
-              I'm a passionate front-End developer with expertise in both front-end and 
-              Basic back-end technologies. I love creating seamless user experiences and 
-              robust server architectures.
+              I'm a passionate Frontend Developer specializing in React with 
+              full MERN stack capabilities. I create seamless user experiences 
+              while understanding the entire web development ecosystem.
             </motion.p>
             
             <motion.p variants={itemVariants}>
-             I've worked on various projects ranging 
-              from simple websites to complex web applications. I'm always eager to 
-              learn new technologies and tackle challenging problems.
+              With expertise in both frontend and backend technologies, I build 
+              complete web applications from database to user interface. I've 
+              worked on various projects ranging from simple websites to complex 
+              fullstack applications with real-time features.
             </motion.p>
             
             <motion.p variants={itemVariants}>
@@ -90,15 +91,14 @@ const About = () => {
                 <div className="profile-image">
                   <div className="image-placeholder">
                    <img src={profileImage} alt="Helen Lemessa" className="profile-img" />
-
                   </div>
                 </div>
                 <div className="profile-info">
-                  <h4>helen lemessa</h4>
-                  <p>Front-End Developer</p>
+                  <h4>Helen Lemessa</h4>
+                  <p>Frontend Developer | MERN Stack</p>
                   <div className="profile-stats">
                     <div className="stat">
-                      <strong>5+</strong>
+                      <strong>4+</strong>
                       <span>Projects</span>
                     </div>
                     <div className="stat">

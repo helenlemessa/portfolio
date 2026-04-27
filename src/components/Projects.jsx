@@ -1,6 +1,10 @@
-// src/components/Projects.jsx
+// src/components/Projects.jsx - FIXED VERSION
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import propertyImg from '../assets/images/propmanage.png'
+import housingImg from '../assets/images/addisrent.png'
+import servicehubImg from '../assets/images/servicehub.png'
+import culturehubImg from '../assets/images/culturehub.png'
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all')
@@ -8,50 +12,50 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'property-management-dashboard',
+      title: 'Property Management Dashboard',
       description: 'Frontend dashboard simulating a real property management system. Built with React, focused on UX, state management, and scalable component architecture.',
-      image: '/api/placeholder/400/250',
+      image: propertyImg,
       tags: ['React', 'Tailwind CSS', 'JavaScript'],
       category: 'frontend',
       liveUrl: 'https://property-management-dashboard-umber.vercel.app',
       codeUrl: 'https://github.com/helenlemessa/property-management-dashboard',
-      projectUrl: 'https://helenlemessa/property-management-demo.com',
+      projectUrl: 'https://property-management-dashboard-umber.vercel.app',
       liveStatus: 'live'
     },
     {
       id: 2,
       title: 'Affordable Housing & Rental Platform',
       description: 'Fullstack platform for listing and renting properties across Ethiopia. Includes dynamic listings, user profiles, search/filter, and booking functionality.',
-      image: '/api/placeholder/400/250',
+      image: housingImg,
       tags: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
       category: 'fullstack',
-      liveUrl: 'https://addis-rent-fullstack.vercel.app/', // No live demo yet
+      liveUrl: 'https://addis-rent-fullstack.vercel.app/',
       codeUrl: 'https://github.com/helenlemessa/Addis-rent-fullstack',
-      projectUrl: 'https://housing-platform-demo.com',
-      liveStatus: 'live' // <-- Coming Soon flag
+      projectUrl: 'https://addis-rent-fullstack.vercel.app/',
+      liveStatus: 'live'
     },
     {
       id: 3,
-      title: 'TripGenerator',
-      description: 'Frontend travel website that generates personalized trips based on user preferences with responsive UI and dynamic content rendering.',
-      image: '/api/placeholder/400/250',
-      tags: ['React', 'Tailwind CSS', 'JavaScript'],
-      category: 'frontend',
-      liveUrl: 'https://trip-generator-eight.vercel.app/',
-      codeUrl: 'https://github.com/helenlemessa/trip-generator',
-      projectUrl: 'https://tripgenerator-demo.com',
+      title: 'ServiceHub Ethiopia',
+      description: 'A full-stack service marketplace platform where users can buy and sell services, with features like real-time chat, dark mode, reposts, notifications, and comprehensive user profiles.',
+      image: servicehubImg,
+      tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'Tailwind CSS'],
+      category: 'fullstack',
+      liveUrl: 'https://servicehub-psi.vercel.app',
+      codeUrl: 'https://github.com/helenlemessa/servicehub',
+      projectUrl: 'https://servicehub-psi.vercel.app',
       liveStatus: 'live'
     },
     {
       id: 4,
       title: 'CultureHub',
-      description: 'Frontend platform showcasing Ethiopian art, and events with interactive galleries and smooth navigation. Includes basic backend integration for storing and retrieving some data.',
-      image: '/api/placeholder/400/250',
-      tags: ['React', 'Tailwind CSS', 'React Router','Node.js', 'Express', 'MongoDB'],
-      category: 'fullstack',
+      description: 'Frontend platform showcasing Ethiopian art and events with interactive galleries and smooth navigation. Includes basic backend integration for storing and retrieving some data.',
+      image: culturehubImg,
+      tags: ['React', 'Tailwind CSS', 'React Router', 'Node.js', 'Express', 'MongoDB'],
+      category: 'frontend',
       liveUrl: 'https://culturehub-nine.vercel.app/',
       codeUrl: 'https://github.com/helenlemessa/culturehub',
-      projectUrl: 'https://culturehub-demo.com',
+      projectUrl: 'https://culturehub-nine.vercel.app/',
       liveStatus: 'live'
     }
   ]
@@ -70,7 +74,6 @@ const Projects = () => {
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
   }
 
-  // Function to handle project card click
   const handleProjectClick = (url, liveStatus) => {
     if (liveStatus === 'coming-soon') {
       alert('Live demo coming soon!')
@@ -128,10 +131,16 @@ const Projects = () => {
                 style={{ cursor: 'pointer' }}
               >
                 <div className="project-image">
-                  <div className="project-image-placeholder">
-                    <div className="project-number">0{project.id}</div>
-                    <div className="project-category">{project.category}</div>
-                  </div>
+                  {/* THIS IS WHERE THE IMAGE GOES - FIXED! */}
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                   <div className="project-overlay">
                     <div className="project-links">
                       <a 

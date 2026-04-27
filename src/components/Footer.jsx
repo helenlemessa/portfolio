@@ -1,32 +1,15 @@
-// src/components/Footer.jsx
+// src/components/Footer.jsx - NO EMOJIS
 import React from 'react'
 import { motion } from 'framer-motion'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
-  // Replace these with your actual profile URLs
   const socialLinks = [
-    { 
-      name: 'GitHub', 
-      url: 'https://github.com/helenlemessa', // Replace with your GitHub URL
-      icon: '🐙' 
-    },
-    { 
-      name: 'LinkedIn', 
-      url: 'https://www.linkedin.com/in/helen-lemessa/', // Replace with your LinkedIn URL
-      icon: '💼' 
-    },
-    { 
-      name: 'Twitter', 
-      url: '#', // Keep or replace with your Twitter URL
-      icon: '🐦' 
-    },
-    { 
-      name: 'Instagram', 
-      url: '#', // Keep or replace with your Instagram URL
-      icon: '📷' 
-    }
+    { name: 'GitHub', url: 'https://github.com/helenlemessa' },
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/helen-lemessa/' },
+    { name: 'Twitter', url: '#' },
+    { name: 'Instagram', url: '#' }
   ]
 
   return (
@@ -73,14 +56,13 @@ const Footer = () => {
                   href={social.url}
                   className="social-link"
                   whileHover={{ 
-                    scale: 1.2,
-                    y: -5
+                    scale: 1.05,
+                    x: 5
                   }}
-                  whileTap={{ scale: 0.9 }}
-                  target="_blank" // Opens in new tab
-                  rel="noopener noreferrer" // Security best practice
+                  whileTap={{ scale: 0.95 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <span className="social-icon">{social.icon}</span>
                   <span className="social-name">{social.name}</span>
                 </motion.a>
               ))}

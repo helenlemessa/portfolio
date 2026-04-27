@@ -1,4 +1,4 @@
-// src/components/Contact.jsx
+// src/components/Contact.jsx - NO EMOJIS
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
@@ -20,38 +20,34 @@ const Contact = () => {
     })
   }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  
-  // Reset status
-  setSubmitStatus(null);
-  setIsSubmitting(true);
-  
-  try {
-    const BACKEND_URL = process.env.NODE_ENV === 'production' 
-      ? 'https://portfolio-r7d5.onrender.com'
-      : 'http://localhost:5001';
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     
-    const response = await axios.post(`${BACKEND_URL}/api/contact`, formData);
+    setSubmitStatus(null);
+    setIsSubmitting(true);
     
-    if (response.data.success) {
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    } else {
+    try {
+      const BACKEND_URL = process.env.NODE_ENV === 'production' 
+        ? 'https://portfolio-r7d5.onrender.com'
+        : 'http://localhost:5001';
+      
+      const response = await axios.post(`${BACKEND_URL}/api/contact`, formData);
+      
+      if (response.data.success) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+        console.error('Server error:', response.data.error);
+      }
+    } catch (error) {
       setSubmitStatus('error');
-      console.error('Server error:', response.data.error);
+      console.error('Error details:', error);
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 5000);
     }
-  } catch (error) {
-    setSubmitStatus('error');
-    console.error('Error details:');
-    console.error('Full error:', error);
-    console.error('Response data:', error.response?.data);
-    console.error('Response status:', error.response?.status);
-  } finally {
-    setIsSubmitting(false);
-    setTimeout(() => setSubmitStatus(null), 5000);
-  }
-};
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -97,7 +93,7 @@ const handleSubmit = async (e) => {
             
             <div className="contact-details">
               <div className="contact-item">
-                <div className="contact-icon">📧</div>
+              
                 <div>
                   <h4>Email</h4>
                   <p>helenlemessa1919@gmail.com</p>
@@ -105,7 +101,7 @@ const handleSubmit = async (e) => {
               </div>
               
               <div className="contact-item">
-                <div className="contact-icon">📱</div>
+                
                 <div>
                   <h4>Phone</h4>
                   <p>+251-936187514</p>
@@ -113,10 +109,10 @@ const handleSubmit = async (e) => {
               </div>
               
               <div className="contact-item">
-                <div className="contact-icon">📍</div>
+                
                 <div>
                   <h4>Location</h4>
-                  <p> Addis Ababa</p>
+                  <p>Addis Ababa</p>
                 </div>
               </div>
             </div>
